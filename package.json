@@ -1,0 +1,22 @@
+{
+  "name": "project-6",
+  "version": "1.0.0",
+  "description": "Pull the front-end app code from [this project repo](https://github.com/OpenClassrooms-Student-Center/Web-Developer-P6) and take the following steps:\r 1. Clone repo\r 2. Open a terminal (Linux/Mac) or command prompt/PowerShell (Windows)\r 3. Run npm install from within the project directory\r 4. Run npm start\r 5. Run your API on http://localhost:3000",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jjoslin07/Project-6.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jjoslin07/Project-6/issues"
+  },
+  "homepage": "https://github.com/jjoslin07/Project-6#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
