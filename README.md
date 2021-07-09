@@ -1,5 +1,5 @@
 # Build a Secure API for a Review App
-## To Run Project ⤵️
+## To Run Project ⤵️ 
 Pull the front-end app code from [this project repo](https://github.com/OpenClassrooms-Student-Center/Web-Developer-P6) and take the following steps:
 1. Clone repo
 2. Open a terminal (Linux/Mac) or command prompt/PowerShell (Windows)
