@@ -9,25 +9,25 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use((req, res, next) => {
-    console.log('Request received!');
-    next();
-});
-
-app.use((req, res, next) => {
-    res.status(201);
-    next();
-});
-
-app.use((req, res, next) => {
-    res.json({
-        message: 'Your request was successful!'
-    });
-    next();
-});
-
-app.use((req, res, next) => {
-    console.log('Response sent successfully!');
+app.get('/api/test/get', (req, res, next) => {
+    const stuff = [{
+            _id: 'oeihfzeoi',
+            title: 'My first thing',
+            description: 'All of the info about my first thing',
+            imageUrl: '',
+            price: 3900,
+            userId: 'userOne',
+        },
+        {
+            _id: 'oeihfzeomoihi',
+            title: 'My second thing',
+            description: 'All of the info about my second thing',
+            imageUrl: '',
+            price: 2900,
+            userId: 'userTwo',
+        },
+    ];
+    res.status(200).json(stuff);
 });
 
 module.exports = app;
