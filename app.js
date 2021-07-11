@@ -2,6 +2,20 @@ const express = require('express');
 
 const app = express();
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+
+require('dotenv').config();
+
+
+mongoose.connect(process.env.DB_CONNECTION)
+    .then(() => {
+        console.log('Successfully connected to MongoDB Atlas!');
+    })
+    .catch((error) => {
+        console.log('Unable to connect to MongoDB Atlas!');
+        console.error(error);
+    });
+
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
