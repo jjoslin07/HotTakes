@@ -3,6 +3,8 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const userRoutes = require('./routes/user');
+const sauceRoutes = require('./routes/sauce');
 
 require('dotenv').config();
 
@@ -29,32 +31,7 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 
-app.post('/api/test/post', (req, res, next) => {
-    console.log(req.body);
-    res.status(201).json({
-        message: 'Thing created successfully!'
-    });
-});
-
-app.get('/api/test/get', (req, res, next) => {
-    const stuff = [{
-            _id: 'oeihfzeoi',
-            title: 'My first thing',
-            description: 'All of the info about my first thing',
-            imageUrl: '',
-            price: 3900,
-            userId: 'userOne',
-        },
-        {
-            _id: 'oeihfzeomoihi',
-            title: 'My second thing',
-            description: 'All of the info about my second thing',
-            imageUrl: '',
-            price: 2900,
-            userId: 'userTwo',
-        },
-    ];
-    res.status(200).json(stuff);
-});
+app.use('/api/auth', userRoutes);
+app.use('api/sauces', sauceRoutes);
 
 module.exports = app;
