@@ -5,6 +5,5 @@ const auth = require('../middleware/auth');
 
 const sauceCtrl = require('../controllers/sauce');
 
-router.get('/', auth, sauceCtrl.getAllSauce);
-
+router.get('/', auth, sauceCtrl.getAllSauces);
 module.exports = router;
