@@ -18,7 +18,7 @@ exports.signup = (req, res, next) => {
                 }
             ).catch(
                 (error) => {
-                    res.status(500).json({
+                    res.status(401).json({
                         error: error
                     });
                 }
@@ -45,11 +45,11 @@ exports.login = (req, res, next) => {
                         });
                     }
                     const token = jwt.sign({
-                            userId: user._id
-                        },
+                        userId: user._id
+                    },
                         process.env.SECRET_TOKEN, {
-                            expiresIn: '24h'
-                        });
+                        expiresIn: '24h'
+                    });
                     res.status(200).json({
                         userId: user._id,
                         token: token
