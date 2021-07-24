@@ -1,0 +1,1 @@
+## This folder us used to store images of the Sauce for each user on the system locally.
