@@ -139,13 +139,11 @@ exports.likeSauce = (req, res, next) => {
         _id: req.params.id
     }).then((sauce) => {
         // Adds 1 like to the sauce for unique user.
-        if (req.body.like === 1) {
-            console.log(req.body.like);
+        if (req.body.like === 1 && !sauce.usersLiked.includes(req.body.userId)) {
             sauce.usersLiked.push(req.body.userId);
             sauce.likes += 1;
             // Adds 1 dislike to the suace for unique user.
-        } else if (req.body.like === -1) {
-            console.log(req.body.like);
+        } else if (req.body.like === -1 && !sauce.usersDisliked.includes(req.body.userId)) {
             sauce.usersDisliked.push(req.body.userId);
             sauce.dislikes += 1;
         } else {
@@ -166,9 +164,10 @@ exports.likeSauce = (req, res, next) => {
         }, sauce)
             .then((sauce) => {
                 res.status(201).json(sauce)
-            }).catch((error) => {
+            })
+            .catch((error) => {
                 res.status(400).json({
-                    error: error,
+                    error: error
                 });
             });
     });
