@@ -18,8 +18,9 @@ exports.signup = (req, res, next) => {
                 }
             ).catch(
                 (error) => {
-                    res.status(401).json({
-                        error: error
+                    return res.status(401).json({
+                        error: error,
+                        message: 'Email not valid or is already in use, please try again!'
                     });
                 }
             );
