@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 
-
+// Sign the user up with a unique id using a unique email and hash's the password to store in database.
 exports.signup = (req, res, next) => {
     bcrypt.hash(req.body.password, 10).then(
         (hash) => {
@@ -10,6 +10,7 @@ exports.signup = (req, res, next) => {
                 email: req.body.email,
                 password: hash
             });
+            // Save user to database.
             user.save().then(
                 () => {
                     res.status(201).json({
@@ -28,6 +29,7 @@ exports.signup = (req, res, next) => {
     );
 };
 
+// Searches for user in the database and if found compares password with bcrypt hash and logs user in.
 exports.login = (req, res, next) => {
     User.findOne({
         email: req.body.email
@@ -38,6 +40,7 @@ exports.login = (req, res, next) => {
                     error: new Error('User not found!')
                 });
             }
+            // Compare password hash's to login user in.
             bcrypt.compare(req.body.password, user.password).then(
                 (valid) => {
                     if (!valid) {
@@ -45,6 +48,7 @@ exports.login = (req, res, next) => {
                             error: new Error('Incorrect password!')
                         });
                     }
+                    // Use Json Web Token to keep the user signed in (Gives unique token that expires in 24 hours.)
                     const token = jwt.sign({
                         userId: user._id
                     },
@@ -71,4 +75,4 @@ exports.login = (req, res, next) => {
             });
         }
     );
-}
+};

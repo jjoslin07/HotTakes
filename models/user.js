@@ -5,11 +5,13 @@
 */
 
 const mongoose = require('mongoose');
+// Use mongoose plugin to require unique email in the signup process.
 const uniqueValidator = require('mongoose-unique-validator');
 
-let validateEmail = function (email) {
+// Fucntion to require email validation before signup
+let validateEmail = (email) => {
     var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    return re.test(email)
+    return re.test(email);
 };
 
 const userSchema = mongoose.Schema({

@@ -1,7 +1,7 @@
 const Sauce = require('../models/sauce');
 const fs = require('fs');
 
-// Creates a new sauce using sauce schema.
+// Creates a new sauce using Sauce schema model .
 exports.createSauce = (req, res, next) => {
     req.body.sauce = JSON.parse(req.body.sauce);
     const url = req.protocol + '://' + req.get('host');
@@ -18,7 +18,7 @@ exports.createSauce = (req, res, next) => {
         usersLiked: req.body.sauce.usersLiked,
         usersDisliked: req.body.sauce.usersDisliked
     });
-    // Saves the sauce
+    // Save the sauce
     sauce.save().then(
         () => {
             res.status(201).json({
@@ -78,6 +78,7 @@ exports.modifySauce = (req, res, next) => {
             heat: req.body.heat,
         };
     }
+    // Update any modifications to sauce and save.
     Sauce.updateOne({
         _id: req.params.id
     }, sauce).then(
@@ -102,6 +103,7 @@ exports.deleteSauce = (req, res, next) => {
     }).then(
         (sauce) => {
             const filename = sauce.imageUrl.split('/images/')[1];
+            // Delete image from local storage
             fs.unlink('images/' + filename, () => {
                 Sauce.deleteOne({
                     _id: req.params.id
@@ -138,7 +140,7 @@ exports.likeSauce = (req, res, next) => {
             sauce.dislikes += 1;
         } else {
             // Removes 1 like for a unique sauce and user.
-            req.body.like = 0
+            req.body.like = 0;
             if (sauce.usersLiked.includes(req.body.userId)) {
                 sauce.usersLiked.remove(req.body.userId);
                 sauce.likes += -1;
@@ -153,7 +155,7 @@ exports.likeSauce = (req, res, next) => {
             _id: req.params.id
         }, sauce)
             .then((sauce) => {
-                res.status(201).json(sauce)
+                res.status(201).json(sauce);
             })
             .catch((error) => {
                 res.status(400).json({
