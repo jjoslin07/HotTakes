@@ -74,4 +74,17 @@ The assessor will challenge your decisions, so be prepared to defend your work. 
 🧰 Implement a data model
 
 🧰 Store data securely using NoSQL
+## Screenshots
+### Login
+![image](https://user-images.githubusercontent.com/73438491/162643777-9bc5d804-5e9a-451f-9a3b-f3c1a4e111d0.png)
+### Home Page
+![image](https://user-images.githubusercontent.com/73438491/162643786-d5ecb379-32e1-4d2c-b371-22a944a0ae21.png)
+### Add Sauce
+![image](https://user-images.githubusercontent.com/73438491/162643789-92521d52-1531-4f3d-ab69-7308d2e738da.png)
+### Home Page with new sauce added
+![image](https://user-images.githubusercontent.com/73438491/162643796-ac872e62-472c-4dcb-bf0b-1f6d5da6b415.png)
+### Individual Page for Sauce
+![image](https://user-images.githubusercontent.com/73438491/162643799-c5ee340c-cc58-4bdf-b00a-f5415f43e537.png)
+
+
 
